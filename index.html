@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="/cuble/assets/favicon.ac018931.png">
+    <link rel="apple-touch-icon" href="/cuble/assets/favicon.ac018931.png">
+    <meta name="title" content="Cuble - A daily cubing game">
+    <meta name="description" content="The Wordle of Rubik's Cubes! Guess the scramble in as few tries as you can.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cuble - A daily cubing game">
+    <meta property="og:description"
+        content="The Wordle of Rubik's Cubes! Guess the scramble in as few tries as you can.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/DanielZTing/cuble/master/favicon.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Cuble - A daily cubing game">
+    <meta property="twitter:description"
+        content="The Wordle of Rubik's Cubes! Guess the scramble in as few tries as you can.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/DanielZTing/cuble/master/favicon.png">
+    <meta name="theme-color" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cuble - A daily cubing game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    
+  <script type="module" crossorigin src="/cuble/assets/index.56e88484.js"></script>
+  <link rel="modulepreload" href="/cuble/assets/vendor.6bafb6cf.js">
+  <link rel="stylesheet" href="/cuble/assets/index.dd0e4700.css">
+<link rel="manifest" href="/cuble/manifest.webmanifest"></head>
+
+<body>
+    <button id="open-stats">📊</button>
+    <div id="stats-container" class="container" style="display: none">
+        <div id="stats-modal" class="modal">
+            <h1>STATISTICS</h1>
+            <canvas id="graph"></canvas>
+            <p>
+                <span>NEXT CUBLE IN: </span>
+                <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
+            </p>
+            <button id="close-stats" class="ok">OK</button>
+        </div>
+    </div>
+    <button id="open-tutorial">ℹ️</button>
+    <div id="tutorial-container" class="container" style="display: none">
+        <div id="tutorial-modal" class="modal">
+            <h1>HOW TO PLAY</h1>
+            <p>Guess the CUBLE in as few tries as you can.</p>
+            <p>Each guess must be a solvable cube. Status indicators for corner/edge orientation parity and permutation
+                parity are provided for your convenience.</p>
+            <p>Click or tap on a piece to select it. Hit ❌ to erase a piece, 🔄 to flip an edge or twist a corner, and ✅
+                to submit.
+            </p>
+            <p>After each guess, a 2D projection will tell you how close your guess was to the actual scramble.</p>
+            <p>A new CUBLE will be available each day!</p>
+            <hr>
+            <h2>Example</h2>
+            <canvas id="example"></canvas>
+            <p>The white top left corner facelet is the correct color.</p>
+            <p>The bottom left corner facelet that is /'ed out is NOT white, but there is another CORNER piece on the
+                same face that is
+                white.</p>
+            <p>The right edge facelet that is /'ed out is NOT green, but there is another EDGE piece on the same face
+                that is green.
+            </p>
+            <p>The rest of the colors that are X'ed out do not appear anywhere else on the white face.</p>
+            <hr>
+            <h2>Notes and Tips</h2>
+            <p>To help get you started, the results of guessing the solved cube are shown first. This free guess does
+                not count against your score.</p>
+            <p>You can only use each piece once, so you will first have to erase one piece to change the color of
+                another.</p>
+            <p>To ensure the cube always stays in a solvable state, try to limit yourself to the following actions:</p>
+            <ul>
+                <li>Flipping two edges</li>
+                <li>Twisting three corners once</li>
+                <li>Twisting one corner twice and two corners once</li>
+                <li>Cycling three pieces while preserving their orientations</li>
+                <li>Swapping two PAIRS of pieces while preserving their orientations</li>
+            </ul>
+            <p>The game saves automatically after each guess and locks pieces that are correctly permuted and oriented
+                in place, so you don't have to worry about accidentally messing up your progress.</p>
+            <p>The numbers after the guess in the share text represent how many guesses it took to get the corresponding
+                piece in the following list list correct:</p>
+            <p>UF UR UB UL DF DR DB DL FR FL BR BL UFR URB UBL ULF DRF DFL DLB DBR</p>
+            <hr>
+            <h2>Fixing an Unsolvable Cube</h2>
+            <p>If edge parity (EP) is nonzero, flip any edge.</p>
+            <p>If corner parity (CP) is nonzero, twist one or more corners until it reaches zero.</p>
+            <p>If permutation parity (PP) is nonzero, swap any two pieces.</p>
+            <hr>
+            <p><a href="https://github.com/DanielZTing/cuble/issues">File a bug report or submit a feature request on
+                    GitHub issues.</a></p>
+            <div>
+                <input type="checkbox" id="read-tutorial">
+                <label>I have read this tutorial and understand I can get back to it by clicking the ℹ️ icon in the top
+                    right corner.</label>
+            </div>
+            <br>
+            <button id="close-tutorial" class="ok" disabled>PLAY</button>
+        </div>
+    </div>
+    <canvas id="feedback"></canvas>
+    <h2 id="parity"></h2>
+    <div id="picker"></div>
+    <div id="actions">
+        <button id="erase" class="action" disabled>❌</button>
+        <button id="rotate" class="action" disabled>🔄</button>
+        <button id="guess" class="action">✅</button>
+    </div>
+    <canvas id="confetti"></canvas>
+    
+</body>
+
+</html>
